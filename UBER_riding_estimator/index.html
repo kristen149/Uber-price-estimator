@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Price Estimator</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--===============================================================================================-->
+  <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap-4.5.0-dist/css/bootstrap.min.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+  <!--===============================================================================================-->
+
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+  <!--===============================================================================================-->
+</head>
+
+<body>
+  <div class="container-contact100">
+    <div class="contact100-map" id="google_map" data-map-x="40.722047" data-map-y="-73.986422"
+      data-pin="images/icons/map-marker.png" data-scrollwhell="0" data-draggable="1"></div>
+
+    <div class="contact100-more">
+      <i class="zmdi zmdi-phone-in-talk"></i>
+      (+84) 931.63.7081
+    </div>
+
+    <div class="wrap-contact100">
+      <div>
+        <span style="padding:20px"></span>
+        <img src="images/codepro.png" alt="Front End CyberSoft" width="30%" />
+
+        <div style="clear:both"></div>
+        <span class="contact100-form-title">
+         PRICE ESTIMATOR
+        </span>
+        <h2>Please choose type of Cars</h2>
+        <ul>
+          <li class="type">
+            <input id="uberX" type="radio" name="selector" />
+            <label for="uberX">Uber X</label>
+
+            <div class="check"></div>
+          </li>
+
+          <li class="type">
+            <input id="uberSUV" type="radio" name="selector" />
+            <label for="uberSUV">Uber SUV</label>
+            <div class="check"></div>
+          </li>
+
+          <li class="type">
+            <input id="uberBlack" type="radio" name="selector" />
+            <label for="uberBlack">Uber Black</label>
+            <div class="check"></div>
+          </li>
+        </ul>
+      </div>
+      <div style="clear:both;"></div>
+
+      <form class="contact100-form">
+        <div class="wrap-input100 validate-input" data-validate="Name is required">
+          <h2>Enter number of Km</h2>
+          <input id="numOfKm" class="input100" type="text" name="name" placeholder="Number of Km ..." />
+          <span class="focus-input100"></span>
+        </div>
+        <div class="wrap-input100 validate-input" data-validate="Name is required">
+          <h2>Enter waiting time</h2>
+          <input id="waitingTime" class="input100" type="text" name="name" placeholder="Waiting time  ..." />
+          <span class="focus-input100"></span>
+        </div>
+
+        <div class="wrap-contact100-form-btn">
+          <div class="contact100-form-bgbtn"></div>
+          <button id="btnCalculate" type="button" class="contact100-form-btn">
+          CALCULATE
+          </button>
+        </div>
+        <div class="wrap-contact100-form-btn">
+          <div class="contact100-form-bgbtn"></div>
+          <button type="button" class="contact100-form-btn" data-toggle="modal" data-target="#modelId" id="btnInvoicedetail">
+          INVOICE DETAIL
+          </button>
+        </div>
+      </form>
+
+      <div style="clear:both"></div>
+      
+      <div id = "divtotalPrice" class = "alert alert-warning">
+          <h2> 
+            Amount charged:
+            <span id="printtotalPrice" > </span>
+            USD
+          </h2>
+        </div>
+
+    </div>
+  </div>
+  
+
+  <!-- Modal -->
+  <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Invoice</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Detail</th>
+                <th>Riding</th>
+                <th>Price</th>
+                <th>Amount Charged</th>
+              </tr>
+            </thead>
+            <tbody id="tblBody">
+              <!-- <tr>
+                  <td>UberX</td>
+                  <td>1 km</td>
+                  <td>8000</td>
+                  <td>8000</td>
+                </tr>
+                <tr>
+                  <td>UberX</td>
+                  <td>14 km</td>
+                  <td>12000</td>
+                  <td>168000</td>
+                </tr>
+                <tr>
+                  <td>Thời gian chờ</td>
+                  <td>2 phút</td>
+                  <td>2000</td>
+                  <td>4000</td>
+                </tr>
+                <tr>
+                  <td colspan="3">Total</td>
+                  <td>180000</td>
+                </tr> -->
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--===============================================================================================-->
+  <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/animsition/js/animsition.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/popper.js/popper.min.js"></script>
+  <script src="vendor/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
+  <script src="js/map-custom.js"></script>
+  <!--===============================================================================================-->
+
+  <script src="script.js"></script>
+</body>
+
+</html>
